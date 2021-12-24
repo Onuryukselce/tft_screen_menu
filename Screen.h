@@ -10,12 +10,17 @@
 
 class Screen {
   private:
-  Canvas current;
   std::list <Canvas*> canvasList; 
-  Adafruit_ST7735* tft;
 
   public:
-  void drawLine(int x0, int y0, int x1, int y1,uint16_t color, int rotation);
+  Screen();
+  Canvas currentCanvas;
+  Screen(Adafruit_ST7735 _tft);
+  Adafruit_ST7735* tft;
+  void drawFastHLine(int16_t x, int16_t y ,int16_t w);
+  void drawFastVLine(int16_t x, int16_t y, int16_t w);
+  void drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int rotation);
+  void drawCanvasRect(int16_t x, int16_t y, int16_t w, int16_t h);
   void draw();
   
 };
